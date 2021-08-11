@@ -3,24 +3,21 @@ import { connect } from 'react-redux';
 
 import { setMovies } from '../../store/actions';
 
-const TOC = (props) => {
+import Card from '../Card/Card';
+const TOC = ({ movies, setMovies }) => {
   useEffect(() => {
-    props.setMovies('SET_MOVIES');
-  }, [props.setMovies]);
+    setMovies('SET_MOVIES');
+  }, [setMovies]);
 
-  return (
-    <div>
-      <h1>TOC</h1>
-    </div>
-  );
+  return <>{!movies.length ? <div>Loading...</div> : <Card movies={movies} />}</>;
 };
 
-// const mapStateToProps = (state) => ({
-//   movies: state.swapi.movies,
-// });
+const mapStateToProps = (state) => ({
+  movies: state.swapi.movies,
+});
 
-// const mapDispatchToProps = {
-//   setMovies,
-// };
+const mapDispatchToProps = {
+  setMovies,
+};
 
-export default connect(null, { setMovies })(TOC);
+export default connect(mapStateToProps, mapDispatchToProps)(TOC);
