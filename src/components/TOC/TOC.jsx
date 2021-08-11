@@ -6,7 +6,7 @@ import { setMovies } from '../../store/actions';
 import Card from '../Card/Card';
 const TOC = ({ movies, setMovies }) => {
   useEffect(() => {
-    setMovies('SET_MOVIES');
+    setMovies();
   }, [setMovies]);
 
   return <>{!movies.length ? <div>Loading...</div> : <Card movies={movies} />}</>;

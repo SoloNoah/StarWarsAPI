@@ -1,12 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const MoviePreview = ({ movie }) => {
-  console.log(movie);
+import { setChosenMovie } from '../../store/actions';
+
+const MoviePreview = ({ movie, selectedMovie, setChosenMovie }) => {
+  const setMovie = () => {
+    setChosenMovie(movie);
+  };
   return (
-    <div className='movie-card'>
+    <li className='movie-item' onClick={setMovie}>
       <h2>{movie.title}</h2>
-    </div>
+    </li>
   );
 };
 
-export default MoviePreview;
+const mapStateToProps = (state) => ({
+  selectedMovie: state.swapi.selectedMovie,
+});
+
+const mapDispatchToProps = {
+  setChosenMovie,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePreview);

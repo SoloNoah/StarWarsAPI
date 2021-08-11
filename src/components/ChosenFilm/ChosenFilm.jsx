@@ -1,11 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const ChosenFilm = () => {
-  return (
-    <div>
-      <h1>Chosen film</h1>
-    </div>
-  );
+import ChosenFilmCard from './ChosenFilmCard';
+
+const ChosenFilm = ({ selectedMovie }) => {
+  return <>{!selectedMovie ? <div>Select a movie</div> : <ChosenFilmCard movie={selectedMovie} />}</>;
 };
 
-export default ChosenFilm;
+const mapStateToProps = (state) => ({
+  selectedMovie: state.swapi.selectedMovie,
+});
+
+export default connect(mapStateToProps, null)(ChosenFilm);

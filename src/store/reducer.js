@@ -1,7 +1,8 @@
-import { SET_MOVIES } from './actiontypes';
+import { SET_MOVIES, SET_CHOSEN_MOVIE } from './actiontypes';
 
 const initialState = {
   movies: [],
+  selectedMovie: null,
 };
 
 export default function reducer(state = initialState, action) {
@@ -11,6 +12,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         movies: payload,
+      };
+    case SET_CHOSEN_MOVIE:
+      return {
+        ...state,
+        selectedMovie: payload,
       };
     default:
       return state;
