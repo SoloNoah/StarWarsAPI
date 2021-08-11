@@ -1,4 +1,3 @@
-
 /*  Main Component */
 
 * {
@@ -11,7 +10,7 @@ body {
   width: 100%;
   height: 100vh;
   display: flex;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .app {
@@ -25,7 +24,7 @@ body {
 .toc {
   min-width: 30%;
   border: 1px solid white;
-  height: 100vh;
+  min-height: 100vh;
   padding: 1em;
 }
 
@@ -50,9 +49,9 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 5%;
-  padding: 5em;
+  padding: 2em 2em;
   text-align: center;
-  min-width: 50%;
+  min-width: 45%;
 }
 
 .chosenfilm button {
