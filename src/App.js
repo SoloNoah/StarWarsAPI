@@ -9,7 +9,7 @@ import TOC from './components/TOC/TOC';
 function App() {
   return (
     <Provider store={store}>
-      <div className='App'>
+      <div className='app'>
         <TOC />
         <ChosenFilm />
       </div>

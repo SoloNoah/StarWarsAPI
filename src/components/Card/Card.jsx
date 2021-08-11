@@ -4,7 +4,7 @@ import Preview from './Preview';
 const Card = ({ movies }) => {
   
   return (
-    <ul>
+    <ul className="toc">
       {movies.map((movie, index) => (
         <Preview movie={movie} key={index} />
       ))}
