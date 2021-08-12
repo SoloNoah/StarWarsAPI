@@ -1,6 +1,11 @@
 import React from 'react';
+import { setLike } from '../../store/actions';
+import { connect } from 'react-redux';
 
-const ChosenFilmCard = ({ movie }) => {
+const ChosenFilmCard = ({ movie, setLike }) => {
+  const onLikeClicked = () => {
+    setLike(movie);
+  };
   return (
     <React.Fragment>
       {!movie ? (
@@ -9,10 +14,10 @@ const ChosenFilmCard = ({ movie }) => {
         </div>
       ) : (
         <div className='wrapper'>
-          <div className='chosenfilm scroll'>
+          <div className='chosenfilm'>
             <h1>{movie.title}</h1>
+            <button onClick={onLikeClicked}>Like</button>
             <p>{movie.opening_crawl}</p>
-            {/* <button>Like</button> */}
           </div>
         </div>
       )}
@@ -20,4 +25,7 @@ const ChosenFilmCard = ({ movie }) => {
   );
 };
 
-export default ChosenFilmCard;
+const mapDispatchToProps = {
+  setLike,
+};
+export default connect(null, mapDispatchToProps)(ChosenFilmCard);
