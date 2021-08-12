@@ -59,16 +59,18 @@ body {
   margin: 0 auto;
   width: 60%;
   perspective: 300px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: scaleY(0.9);
 }
 
 .chosenfilm {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2em 2em;
-  width: 90vw;
   text-align: center;
-  /* margin: 50% 0 0 0; */
 }
 
 .template {
@@ -89,27 +91,20 @@ body {
 }
 
 .scroll {
-  position: relative;
-  animation: scrollAnimation 10s linear forwards;
-}
-
-.scroll::after {
-  content: '';
-  position: fixed;
+  position: absolute;
+  width: 80%;
   top: 0;
-  width: 100%;
-  height: 50%;
-  /* background to fade out the text as it goes up */
-  background: linear-gradient(180deg, rgba(20, 20, 20, 1) 40%, rgba(20, 20, 20, 0) 100%);
+  z-index: 0;
+  animation: scrollAnimation 60s linear forwards;
 }
 
 @keyframes scrollAnimation {
-  from {
-    top: 2500px;
-    transform: translateZ(0) rotateX(20deg);
+  0% {
+    transform: rotateX(80deg) translate3d(0, 50rem, 0);
+    opacity: 1;
   }
-  to {
-    top: -4000px;
-    transform: translateZ(-1000px) rotateX(20deg);
+
+  100% {
+    transform: rotateX(80deg) translate3d(0, -400rem, 0);
   }
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { setChosenMovie } from '../../store/actions';
 
-const MoviePreview = ({ movie, selectedMovie, setChosenMovie }) => {
+const MoviePreview = ({ movie, setChosenMovie }) => {
   const setMovie = () => {
     setChosenMovie(movie);
   };

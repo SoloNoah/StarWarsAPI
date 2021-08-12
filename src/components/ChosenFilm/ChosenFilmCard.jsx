@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ChosenFilmCard = ({ movie }) => {
+  const [displayedMovie, setDisplayedMovie] = useState({});
+
+  useEffect(() => {
+    if (movie) {
+      setDisplayedMovie(movie);
+    }
+  }, [movie]);
   return (
     <React.Fragment>
       {!movie ? (
@@ -10,9 +17,8 @@ const ChosenFilmCard = ({ movie }) => {
       ) : (
         <div className='wrapper'>
           <div className='chosenfilm scroll'>
-            <h1>{movie.title}</h1>
-            <p>{movie.opening_crawl}</p>
-            {/* <button>Like</button> */}
+            <h1>{displayedMovie.title}</h1>
+            <p>{displayedMovie.opening_crawl}</p>
           </div>
         </div>
       )}
