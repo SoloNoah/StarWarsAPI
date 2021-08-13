@@ -1,11 +1,20 @@
-import React from 'react';
-import { setLike } from '../../store/actions';
+import React, { useState, useEffect } from 'react';
+import { manageLike } from '../../store/actions';
 import { connect } from 'react-redux';
 
-const ChosenFilmCard = ({ movie, setLike }) => {
-  
+const ChosenFilmCard = ({ movie, manageLike, likedState }) => {
+  const [likeState, setLikeState] = useState(false);
+
+  useEffect(() => {
+    if (movie !== null) {
+      console.log(movie.likedState);
+      setLikeState(movie.likedState);
+    }
+  }, [movie]);
+
   const onLikeClicked = () => {
-    setLike(movie);
+    manageLike(movie);
+    setLikeState(!likeState);
   };
   return (
     <React.Fragment>
@@ -17,9 +26,18 @@ const ChosenFilmCard = ({ movie, setLike }) => {
         <div className='wrapper'>
           <div className='chosenfilm'>
             <h1>{movie.title}</h1>
-            <div className='like__btn' onClick={onLikeClicked}>
-              Like this movie
-            </div>
+            {!likeState ? (
+              <div className='like__btn' onClick={onLikeClicked}>
+                Like
+              </div>
+            ) : (
+              <div className='like__btn' onClick={onLikeClicked}>
+                Dislike
+              </div>
+            )}
+            {/* <div className='like__btn' onClick={onLikeClicked}>
+              Like
+            </div> */}
             <p>{movie.opening_crawl}</p>
           </div>
         </div>
@@ -28,7 +46,10 @@ const ChosenFilmCard = ({ movie, setLike }) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  movie: state.swapi.selectedMovie,
+});
 const mapDispatchToProps = {
-  setLike,
+  manageLike,
 };
-export default connect(null, mapDispatchToProps)(ChosenFilmCard);
+export default connect(mapStateToProps, mapDispatchToProps)(ChosenFilmCard);

@@ -6,12 +6,14 @@ const getMovies = async () => {
     if (!localStorage.getItem('movies')) {
       const res = await axios.get(BASE_URL);
       const data = await res.data.results;
-      localStorage.setItem('movies', JSON.stringify(data));
+      const movies = data.map((movie) => ({ ...movie, likedState: false }));
+      console.log(movies);
+      localStorage.setItem('movies', JSON.stringify(movies));
       return data;
     }
-    
-    const localStorageMovies = JSON.parse(localStorage.getItem('movies'));
-    return localStorageMovies;
+
+    const parsedMovies = JSON.parse(localStorage.getItem('movies'));
+    return parsedMovies;
   } catch (error) {
     console.log(error);
   }
