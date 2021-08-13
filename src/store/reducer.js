@@ -20,11 +20,15 @@ export default function reducer(state = initialState, action) {
         selectedMovie: payload,
       };
     case SET_LIKE:
-      for (let item in state.likes) {
-        if (item.title === payload.title) {
-          return state;
+      for (const index in state.likes) {
+        if (JSON.stringify(state.likes[index]) === JSON.stringify(payload)) {
+          let updatedLikes = state.likes.filter((likedObj) => JSON.stringify(likedObj) !== JSON.stringify(payload));
+          localStorage.setItem('likes', JSON.stringify(updatedLikes));
+          return { ...state, likes: updatedLikes };
         }
       }
+      const likeStateUpdate = [...state.likes, payload];
+      localStorage.setItem('likes', JSON.stringify(likeStateUpdate));
       return {
         ...state,
         likes: [...state.likes, payload],

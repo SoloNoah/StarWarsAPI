@@ -3,6 +3,7 @@ import { setLike } from '../../store/actions';
 import { connect } from 'react-redux';
 
 const ChosenFilmCard = ({ movie, setLike }) => {
+  
   const onLikeClicked = () => {
     setLike(movie);
   };
@@ -16,7 +17,9 @@ const ChosenFilmCard = ({ movie, setLike }) => {
         <div className='wrapper'>
           <div className='chosenfilm'>
             <h1>{movie.title}</h1>
-            <button onClick={onLikeClicked}>Like</button>
+            <div className='like__btn' onClick={onLikeClicked}>
+              Like this movie
+            </div>
             <p>{movie.opening_crawl}</p>
           </div>
         </div>

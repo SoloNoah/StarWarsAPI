@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 
 import { setChosenMovie } from '../../store/actions';
 
-const ListItem = ({ movie, setChosenMovie }) => {
+const ListItem = ({ movie, setChosenMovie, showSidebar }) => {
   const setMovie = () => {
     setChosenMovie(movie);
+    showSidebar(true);
   };
 
   return (

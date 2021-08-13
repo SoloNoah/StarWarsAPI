@@ -14,7 +14,7 @@ const List = ({ movies }) => {
       </div>
       <ul className={slide ? 'toc_list active' : 'toc_list'}>
         {movies.map((movie, index) => (
-          <ListItem movie={movie} key={index} />
+          <ListItem movie={movie} key={index} showSidebar={showSidebar} />
         ))}
       </ul>
     </React.Fragment>
