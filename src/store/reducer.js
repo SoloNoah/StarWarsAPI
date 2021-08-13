@@ -1,4 +1,4 @@
-import { SET_MOVIES, SET_CHOSEN_MOVIE, MANAGE_LIKE } from './actiontypes';
+import { SET_MOVIES, SET_CHOSEN_MOVIE, MANAGE_LIKE, SET_LIKES_ONLOAD } from './actiontypes';
 
 const initialState = {
   movies: [],
@@ -28,6 +28,7 @@ export default function reducer(state = initialState, action) {
 
         In real world application I would use unique id to find similaritis. Names can be unique and I can fail in other situations.
       */
+
       for (const index in state.likes) {
         if (state.likes[index].title === payload.title) {
           let updatedLikes = state.likes.filter((likedObj) => likedObj.title !== payload.title);
@@ -41,7 +42,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         likes: [...state.likes, payload],
       };
-
+    case SET_LIKES_ONLOAD:
+      return {
+        ...state,
+        likes: payload,
+      };
     default:
       return state;
   }

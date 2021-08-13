@@ -9,4 +9,6 @@ const getLikedMovies = () => {
     console.log('Error while fetching likes.');
   }
 };
+
+
 export default { getLikedMovies };

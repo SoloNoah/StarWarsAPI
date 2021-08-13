@@ -1,6 +1,6 @@
 import api from '../helper/api';
 import likesHelper from '../helper/likesHelper';
-import { SET_MOVIES, SET_CHOSEN_MOVIE, MANAGE_LIKE } from './actiontypes';
+import { SET_MOVIES, SET_CHOSEN_MOVIE, MANAGE_LIKE, SET_LIKES_ONLOAD } from './actiontypes';
 
 export const setMovies = () => async (dispatch) => {
   try {
@@ -38,5 +38,14 @@ export const manageLike = (likedMovie) => (dispatch) => {
     dispatch({ type: MANAGE_LIKE, payload: likedMovie });
   } catch (error) {
     console.log("Couldn't set like for movie");
+  }
+};
+
+export const setLikesOnload = () => (dispatch) => {
+  try {
+    const likedMovies = likesHelper.getLikedMovies();
+    dispatch({ type: SET_LIKES_ONLOAD, payload: likedMovies });
+  } catch (error) {
+    console.log("Disatch Couldn't load liked movies into redux store ");
   }
 };

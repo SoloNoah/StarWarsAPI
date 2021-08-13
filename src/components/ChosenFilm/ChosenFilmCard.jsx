@@ -3,11 +3,10 @@ import { manageLike } from '../../store/actions';
 import { connect } from 'react-redux';
 
 const ChosenFilmCard = ({ movie, manageLike, likedState }) => {
-  const [likeState, setLikeState] = useState(false);
+  const [likeState, setLikeState] = useState();
 
   useEffect(() => {
     if (movie !== null) {
-      console.log(movie.likedState);
       setLikeState(movie.likedState);
     }
   }, [movie]);
