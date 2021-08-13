@@ -86,13 +86,14 @@ body {
 .burger {
   display: none;
   cursor: pointer;
+  height: 40px;
 }
 
 .burger div {
   width: 35px;
   height: 3px;
   margin: 5px;
-  background-color: white;
+  background-color: var(--main-color);
   transition: all 0.3s ease;
 }
 
@@ -131,12 +132,12 @@ body {
 }
 
 .cross .line-1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
+  transform: rotate(45deg) translate(5px, 6px);
 }
 
 .cross .line-2 {
   opacity: 0;
 }
 .cross .line-3 {
-  transform: rotate(45deg) translate(-5px, -6px);
+  transform: rotate(-45deg) translate(5px, -6px);
 }
