@@ -30,7 +30,7 @@ const ChosenFilmCard = ({ movie, manageLike, likedState }) => {
                 Like
               </div>
             ) : (
-              <div className='like__btn' onClick={onLikeClicked}>
+              <div className='like__btn liked' onClick={onLikeClicked}>
                 Dislike
               </div>
             )}
