@@ -31,7 +31,7 @@ body {
 /* TOC */
 .toc_list {
   width: 30%;
-  border: 1px solid white;
+  border-right: 1px solid white;
   background-color: rgb(20, 20, 20);
   position: fixed;
   min-height: 100vh;
@@ -45,7 +45,7 @@ body {
   margin: 1em;
   display: inline-block;
   width: auto;
-  text-align: center;
+  text-align: start;
   cursor: pointer;
   border-bottom: 1px solid transparent;
   transition: border-bottom 0.7s;
@@ -80,4 +80,63 @@ body {
 .chosenfilm p {
   font-size: 2em;
   text-align: justify;
+}
+
+/* burger */
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 35px;
+  height: 3px;
+  margin: 5px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 985px) {
+  body,
+  html {
+    font-size: 1em;
+  }
+  .toc_list {
+    position: absolute;
+    left: 0px;
+    padding-top: 5vh;
+    transform: translateX(-140%);
+    transition: transform 0.4s ease-in;
+  }
+
+  .burger {
+    display: block;
+    right: 30px;
+    top: 5px;
+    z-index: 2;
+    padding-top: 10px;
+    padding-left: 10px;
+  }
+  .wrapper {
+    margin: 0;
+    margin-top: 50px;
+  }
+  .chosenfilm {
+    padding-left: 0;
+  }
+}
+
+.active {
+  transform: translateX(0%);
+}
+
+.cross .line-1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.cross .line-2 {
+  opacity: 0;
+}
+.cross .line-3 {
+  transform: rotate(45deg) translate(-5px, -6px);
 }
