@@ -3,15 +3,15 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import ChosenFilm from './components/ChosenFilm/ChosenFilm';
+import ChosenFilmCard from './components/ChosenFilm/ChosenFilmCard';
 import TOC from './components/TOC/TOC';
 
 function App() {
   return (
     <Provider store={store}>
-      <div className='App'>
+      <div className='app'>
         <TOC />
-        <ChosenFilm />
+        <ChosenFilmCard />
       </div>
     </Provider>
   );
